@@ -14,13 +14,13 @@
 	</select>
 	
 	<insert id="insertExer">
-		INSERT INTO Exercise (ename, ekcal, etime, etime) VALUES(#{ename}, #{ekcal}, #{etime}, #{edate})
+		INSERT INTO Exercise (ename, ekcal, etime, edate) VALUES(#{ename}, #{ekcal}, #{etime}, #{edate})
 	</insert>
 
 	<update id="updateExer">
 		UPDATE Exercise
 		SET ename = #{ename}, etime = #{etime}, ekcal = #{ekcal}
-		WHERE = eno = #{eno}
+		WHERE eno = #{eno}
 	</update>
 	
 	<delete id="deleteExer">
