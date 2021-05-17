@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="org.ict.mapper.MealMapper">
+
+	<select id="select" resultType="org.ict.domain.MealVO">
+		SELECT fno, ftime, fname, fkcal, fdate
+		FROM meal
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO meal(ftime, fname, fkcal, fdate) VALUES(#{ftime}, #{fname}, #{fkcal}, #{fdate})
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM meal
+		WHERE ftime = #{ftime}
+	</delete>
+
+</mapper>
