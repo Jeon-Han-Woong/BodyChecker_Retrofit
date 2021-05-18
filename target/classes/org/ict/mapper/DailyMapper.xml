@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="org.ict.mapper.DailyMapper">
+
+	<select id="select" resultType="org.ict.domain.DailyVO">
+		SELECT dno, walk, water, ddate, mno
+		FROM daily where ddate = #{ddate}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO meal(dno, walk, water, ddate, mno)
+		VALUES(#{dno}, #{walk}, #{water}, #{ddate}, #{mno})
+	</insert>
+	
+	<update id="update">
+		UPDATE daily
+		SET walk = #{walk} AND water = #{water}
+		WHERE ddate = #{ddate}
+	</update>
+
+</mapper>
