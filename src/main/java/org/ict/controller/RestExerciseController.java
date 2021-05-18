@@ -35,7 +35,7 @@ public class RestExerciseController {
 		
 		List<ExerciseVO> list = service.getAll(edate);
 		
-		result.put("list", list);
+		result.put("ExerciseVO", list);
 		
 		try {
 			entity = new ResponseEntity<Map<String,Object>>(result, HttpStatus.OK);
