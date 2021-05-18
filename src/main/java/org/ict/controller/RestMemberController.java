@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class RestMemberController {
 	@Autowired
 	private MemberService service;
 	
-	@PostMapping(value="/login", consumes="application/json", produces= MediaType.TEXT_PLAIN_VALUE)
+	@PostMapping(value="/login", consumes="application/json", produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<MemberVO> login(@RequestBody MemberVO vo) {
 		ResponseEntity<MemberVO> entity = null;
 		
@@ -65,8 +66,8 @@ public class RestMemberController {
 		return entity;
 	}
 	
-	@DeleteMapping(value="/remove")
-	public ResponseEntity<String> remove(@RequestBody int mno) {
+	@DeleteMapping(value="/remove/{mno}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("mno") int mno) {
 		ResponseEntity<String> entity = null;
 		
 		try {
