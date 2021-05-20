@@ -16,6 +16,11 @@ public class ExerciseServiceImpl implements ExerciseService {
 	public List<ExerciseVO> getAll(String edate) {
 		return mapper.getList(edate);
 	}
+	
+	@Override
+	public Integer getEno() {
+		return mapper.getEno();
+	}
 
 	@Override
 	public void regExer(ExerciseVO exer) {
@@ -31,7 +36,5 @@ public class ExerciseServiceImpl implements ExerciseService {
 	public void removeExer(int eno) {
 		mapper.deleteExer(eno);
 	}
-	
-	
 
 }

@@ -1,5 +1,7 @@
 package org.ict.domain;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 @Data
@@ -9,4 +11,5 @@ public class ExerciseVO {
 	private int ekcal;
 	private int etime;
 	private String edate;
+	private int mno;
 }
