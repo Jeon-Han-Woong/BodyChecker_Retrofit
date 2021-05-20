@@ -22,7 +22,7 @@
 <!-- 		<property name="driverClassName" -->
 <!-- 			value="com.mysql.cj.jdbc.Driver"></property> -->
 <!-- 		<property name="jdbcUrl" -->
-<!-- 			value="jdbc:mysql://localhost:3308/mysql?serverTimezone=UTC"></property> -->
+<!-- 			value="jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC"></property> -->
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl"
@@ -49,7 +49,6 @@
 	
 	<mybatis-spring:scan base-package="org.ict.mapper"/>
 	
-	<context:component-scan base-package="org.ict.service"/>
 	<context:component-scan base-package="org.ict.controller"></context:component-scan>
 		
 </beans>

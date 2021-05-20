@@ -10,7 +10,8 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO meal(ftime, fname, fkcal, fdate) VALUES(#{ftime}, #{fname}, #{fkcal}, #{fdate})
+		INSERT INTO meal(ftime, fname, fkcal, fdate)
+		VALUES(#{ftime}, #{fname}, #{fkcal}, #{fdate})
 	</insert>
 	
 	<delete id="delete">
