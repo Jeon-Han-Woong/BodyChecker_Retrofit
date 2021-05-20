@@ -11,4 +11,5 @@ public class MealVO {
 	private int fkcal;
 	private String ftime;
 	private Date fdate;
+	private int mno;
 }

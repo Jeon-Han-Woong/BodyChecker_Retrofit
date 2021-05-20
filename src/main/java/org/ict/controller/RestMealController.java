@@ -70,7 +70,7 @@ public class RestMealController {
 		return entity;
 	}//remove
 	
-	@RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value="/modify/{vo}/{ftime}", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
+	@PostMapping(value="/modifyFoods/{vo}/{ftime}", consumes="application/json", produces= MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> modifyFoods(@PathVariable("vo") MealVO vo, @PathVariable("ftime") String ftime) {
 		ResponseEntity<String> entity=null;
 		
