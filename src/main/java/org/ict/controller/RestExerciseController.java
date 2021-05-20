@@ -26,7 +26,7 @@ public class RestExerciseController {
 	
 	@Autowired ExerciseService service;
 	
-	@GetMapping(value="/{edate}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/{edate}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<ExerciseVO>> getExerList(@PathVariable("edate") String edate){
 		 
 		ResponseEntity<List<ExerciseVO>> entity = null;
@@ -40,7 +40,7 @@ public class RestExerciseController {
 		return entity;
 	}
 	
-	@GetMapping(value="/neweno", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/neweno", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<Integer> getNewEno(){
 		ResponseEntity<Integer> entity = null;
 		

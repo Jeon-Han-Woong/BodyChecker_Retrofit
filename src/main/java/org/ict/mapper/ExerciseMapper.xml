@@ -13,7 +13,7 @@
 		SELECT * FROM exercise WHERE edate = #{edate}
 	</select>
 	
-	<select id="getEno" resultType="int">
+	<select id="getEno" resultType="Integer">
 		SELECT eno FROM exercise ORDER BY eno DESC LIMIT 1
 	</select>
 	
