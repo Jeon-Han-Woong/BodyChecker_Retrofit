@@ -13,8 +13,12 @@
 		SELECT * FROM exercise WHERE edate = #{edate}
 	</select>
 	
+	<select id="getEno" resultType="int">
+		SELECT eno FROM exercise ORDER BY eno DESC LIMIT 1
+	</select>
+	
 	<insert id="insertExer">
-		INSERT INTO Exercise (ename, ekcal, etime, edate) VALUES(#{ename}, #{ekcal}, #{etime}, #{edate})
+		INSERT INTO Exercise (ename, ekcal, etime, edate, mno) VALUES(#{ename}, #{ekcal}, #{etime}, #{edate}, #{mno})
 	</insert>
 
 	<update id="updateExer">

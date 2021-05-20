@@ -8,6 +8,8 @@ public interface ExerciseMapper {
 	
 	public List<ExerciseVO> getList(String edate);
 	
+	public Integer getEno();
+	
 	public void insertExer(ExerciseVO exer);
 	
 	public void updateExer(ExerciseVO exer);

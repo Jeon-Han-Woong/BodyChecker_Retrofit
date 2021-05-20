@@ -27,22 +27,30 @@ public class RestExerciseController {
 	@Autowired ExerciseService service;
 	
 	@GetMapping(value="/{edate}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<Map<String, Object>> getExerList(@PathVariable("edate") String edate){
+	public ResponseEntity<List<ExerciseVO>> getExerList(@PathVariable("edate") String edate){
 		 
-		ResponseEntity<Map<String, Object>> entity = null;
-		
-		Map<String, Object> result = new HashMap<String, Object>();
-		
-		List<ExerciseVO> list = service.getAll(edate);
-		
-		result.put("ExerciseVO", list);
+		ResponseEntity<List<ExerciseVO>> entity = null;
 		
 		try {
-			entity = new ResponseEntity<Map<String,Object>>(result, HttpStatus.OK);
+			entity = new ResponseEntity<List<ExerciseVO>>(service.getAll(edate), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<List<ExerciseVO>>(HttpStatus.BAD_REQUEST);
 		}
+		return entity;
+	}
+	
+	@GetMapping(value="/neweno", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Integer> getNewEno(){
+		ResponseEntity<Integer> entity = null;
+		
+		try {
+			entity = new ResponseEntity<Integer>(service.getEno(), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		
 		return entity;
 	}
 	

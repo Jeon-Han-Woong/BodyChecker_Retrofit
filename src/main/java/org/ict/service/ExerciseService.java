@@ -8,6 +8,8 @@ public interface ExerciseService {
 	
 	public List<ExerciseVO> getAll(String edate);
 	
+	public Integer getEno();
+	
 	public void regExer(ExerciseVO exer);
 	
 	public void modiExer(ExerciseVO exer);
