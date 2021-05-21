@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="getEno" resultType="Integer">
-		SELECT LAST_INSERT_ID()
+		SELECT MAX(eno) from exercise
 	</select>
 	
 	<insert id="insertExer">
