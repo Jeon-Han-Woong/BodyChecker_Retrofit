@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="getEno" resultType="Integer">
-		SELECT eno FROM exercise ORDER BY eno DESC LIMIT 1
+		SELECT LAST_INSERT_ID()
 	</select>
 	
 	<insert id="insertExer">
