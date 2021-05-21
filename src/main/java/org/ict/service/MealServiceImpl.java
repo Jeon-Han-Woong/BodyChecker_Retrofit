@@ -26,8 +26,8 @@ public class MealServiceImpl implements MealService {
 	}
 
 	@Override
-	public void removeFoods(MealVO vo) {
-		mapper.delete(vo);
+	public void removeFoods(String fdate, String ftime) {
+		mapper.delete(fdate, ftime);
 	}
 
 }

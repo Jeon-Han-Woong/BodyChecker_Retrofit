@@ -11,6 +11,6 @@ public interface MealMapper {
 	
 	public void insert(MealVO vo);
 	
-	public void delete(MealVO vo);
+	public void delete(String fdate, String ftime);
 	
 }
