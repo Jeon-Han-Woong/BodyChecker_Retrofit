@@ -54,14 +54,15 @@ public class RestMealController {
 		return entity;
 	}//addFoods
 	
-	@DeleteMapping(value="/remove/{vo}", consumes="application/json", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> remove(@PathVariable("vo") MealVO vo) {
+	@DeleteMapping(value="/remove/{fdate}/{ftime}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("fdate") String fdate, @PathVariable("ftime") String ftime) {
 		ResponseEntity<String> entity = null;
 		
-		System.out.println(vo.toString());
+		System.out.println(fdate);
+		System.out.println(ftime);
 		
 		try {
-			service.removeFoods(vo);
+			service.removeFoods(fdate, ftime);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
