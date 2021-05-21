@@ -5,18 +5,18 @@
 <mapper namespace="org.ict.mapper.MealMapper">
 
 	<select id="select" resultType="org.ict.domain.MealVO">
-		SELECT fno, ftime, fname, fkcal, fdate
+		SELECT fno, ftime, fname, fkcal, fdate, mno
 		FROM meal
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO meal(ftime, fname, fkcal, fdate)
-		VALUES(#{ftime}, #{fname}, #{fkcal}, #{fdate})
+		INSERT INTO meal(ftime, fname, fkcal, fdate, mno)
+		VALUES(#{ftime}, #{fname}, #{fkcal}, #{fdate}, #{mno})
 	</insert>
 	
 	<delete id="delete">
 		DELETE FROM meal
-		WHERE ftime = #{ftime}
+		WHERE fdate = #{fdate} AND ftime = #{ftime}
 	</delete>
 
 </mapper>
