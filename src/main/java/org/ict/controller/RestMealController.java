@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,7 +25,7 @@ public class RestMealController {
 	@Autowired
 	private MealService service;
 	
-	@GetMapping(value="/getList", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/getList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<MealVO>> getFoods(@PathVariable("date") Date date) {
 		ResponseEntity<List<MealVO>> entity = null;
 		
@@ -55,12 +54,14 @@ public class RestMealController {
 		return entity;
 	}//addFoods
 	
-	@DeleteMapping(value="/remove", consumes="application/json", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> remove(@RequestBody String ftime) {
+	@DeleteMapping(value="/remove/{vo}", consumes="application/json", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("vo") MealVO vo) {
 		ResponseEntity<String> entity = null;
 		
+		System.out.println(vo.toString());
+		
 		try {
-			service.removeFoods(ftime);
+			service.removeFoods(vo);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,20 +70,5 @@ public class RestMealController {
 		
 		return entity;
 	}//remove
-	
-	@PostMapping(value="/modifyFoods/{vo}/{ftime}", consumes="application/json", produces= MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> modifyFoods(@PathVariable("vo") MealVO vo, @PathVariable("ftime") String ftime) {
-		ResponseEntity<String> entity=null;
-		
-		try {
-			service.modifyFoods(vo, ftime);
-			entity=new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
-		}catch(Exception e) {
-			e.printStackTrace();
-			entity=new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-		}
-		
-		return entity;			
-	}//prodModify
 	
 }//class
