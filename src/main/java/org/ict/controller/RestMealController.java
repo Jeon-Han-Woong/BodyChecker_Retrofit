@@ -15,18 +15,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/meal/")
+@RequestMapping("/meal/*")
 public class RestMealController {
 	final String SUCCESS = "SUCCESS";
 	
 	@Autowired
 	private MealService service;
 	
-	@GetMapping(value="/getList", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/getList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<MealVO>> getFoods(@PathVariable("date") Date date) {
 		ResponseEntity<List<MealVO>> entity = null;
 		
@@ -55,12 +54,15 @@ public class RestMealController {
 		return entity;
 	}//addFoods
 	
-	@DeleteMapping(value="/remove", consumes="application/json", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> remove(@RequestBody String ftime) {
+	@DeleteMapping(value="/remove/{fdate}/{ftime}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("fdate") String fdate, @PathVariable("ftime") String ftime) {
 		ResponseEntity<String> entity = null;
 		
+		System.out.println(fdate);
+		System.out.println(ftime);
+		
 		try {
-			service.removeFoods(ftime);
+			service.removeFoods(fdate, ftime);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,20 +71,5 @@ public class RestMealController {
 		
 		return entity;
 	}//remove
-	
-	@RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value="/modify/{vo}/{ftime}", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> modifyFoods(@PathVariable("vo") MealVO vo, @PathVariable("ftime") String ftime) {
-		ResponseEntity<String> entity=null;
-		
-		try {
-			service.modifyFoods(vo, ftime);
-			entity=new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
-		}catch(Exception e) {
-			e.printStackTrace();
-			entity=new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-		}
-		
-		return entity;			
-	}//prodModify
 	
 }//class

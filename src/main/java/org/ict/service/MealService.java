@@ -11,8 +11,6 @@ public interface MealService {
 	
 	public void addFoods(MealVO vo);
 	
-	public void removeFoods(String ftime);
-	
-	public void modifyFoods(MealVO vo, String ftime);
+	public void removeFoods(String fdate, String ftime);
 	
 }

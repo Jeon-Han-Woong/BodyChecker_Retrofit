@@ -6,8 +6,10 @@ import java.util.List;
 import org.ict.domain.MealVO;
 import org.ict.mapper.MealMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class MealServiceImpl implements MealService {
 
 	@Autowired
@@ -24,15 +26,8 @@ public class MealServiceImpl implements MealService {
 	}
 
 	@Override
-	public void removeFoods(String ftime) {
-		mapper.delete(ftime);
-	}
-
-	@Override
-	@Transactional
-	public void modifyFoods(MealVO vo, String ftime) {
-		mapper.delete(ftime);
-		if(vo != null) mapper.insert(vo);
+	public void removeFoods(String fdate, String ftime) {
+		mapper.delete(fdate, ftime);
 	}
 
 }
