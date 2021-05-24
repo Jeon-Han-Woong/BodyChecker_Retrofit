@@ -12,4 +12,5 @@ public interface MemberMapper {
 	
 	public void delete(int mno);
 	
+	public int check(String mid);
 }

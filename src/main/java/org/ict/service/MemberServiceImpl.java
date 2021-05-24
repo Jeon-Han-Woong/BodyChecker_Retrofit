@@ -53,6 +53,11 @@ public class MemberServiceImpl implements MemberService {
 	public void remove(int mno) {
 		mapper.delete(mno);
 	}
+
+	@Override
+	public int check(String mid) {
+		return mapper.check(mid);
+	}
 	
 	private String encode(String pwd) throws NoSuchAlgorithmException {
 		
@@ -61,6 +66,6 @@ public class MemberServiceImpl implements MemberService {
 		String hex = String.format("%0128x", new BigInteger(1, md.digest()));
 		
 		return String.valueOf(hex);
-	}
+	}//encode
 
 }

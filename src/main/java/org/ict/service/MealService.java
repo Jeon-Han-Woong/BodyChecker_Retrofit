@@ -1,13 +1,12 @@
 package org.ict.service;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.ict.domain.MealVO;
 
 public interface MealService {
 	
-	public List<MealVO> getFoods(Date date);
+	public List<MealVO> getFoods(String fdate);
 	
 	public void addFoods(MealVO vo);
 	

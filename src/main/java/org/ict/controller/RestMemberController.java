@@ -81,4 +81,18 @@ public class RestMemberController {
 		return entity;
 	}//remove
 	
+	@PostMapping(value="/check/{mid}", produces= MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<Integer> check(@PathVariable("mid") String mid) {
+		ResponseEntity<Integer> entity  = null;
+		
+		try {
+			entity = new ResponseEntity<Integer>(service.check(mid), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}//check
+	
 }//class

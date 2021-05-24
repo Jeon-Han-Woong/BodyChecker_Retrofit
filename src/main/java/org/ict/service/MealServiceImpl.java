@@ -1,13 +1,11 @@
 package org.ict.service;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.ict.domain.MealVO;
 import org.ict.mapper.MealMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MealServiceImpl implements MealService {
@@ -16,8 +14,8 @@ public class MealServiceImpl implements MealService {
 	private MealMapper mapper;
 	
 	@Override
-	public List<MealVO> getFoods(Date date) {
-		return mapper.select(date);
+	public List<MealVO> getFoods(String fdate) {
+		return mapper.select(fdate);
 	}
 
 	@Override

@@ -6,7 +6,7 @@
 
 	<select id="select" resultType="org.ict.domain.MealVO">
 		SELECT fno, ftime, fname, fkcal, fdate, mno
-		FROM meal
+		FROM meal WHERE fdate = #{fdate}
 	</select>
 	
 	<insert id="insert">

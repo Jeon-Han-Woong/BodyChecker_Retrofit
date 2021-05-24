@@ -9,6 +9,11 @@
 		FROM member WHERE mid = #{mid} AND pwd = #{pwd}
 	</select>
 	
+	<select id="check" resultType="int">
+		SELECT COUNT(mid) FROM member
+		WHERE mid = #{mid}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO member (mid, pwd, mname, gender, height, weight, bmi, birthday, regdate)
 		VALUES (#{mid}, #{pwd}, #{mname}, #{gender}, #{height}, #{weight}, #{bmi}, #{birthday}, #{regdate});

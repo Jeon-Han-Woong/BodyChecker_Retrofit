@@ -1,6 +1,5 @@
 package org.ict.controller;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.ict.domain.MealVO;
@@ -25,12 +24,12 @@ public class RestMealController {
 	@Autowired
 	private MealService service;
 	
-	@GetMapping(value="/getList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<MealVO>> getFoods(@PathVariable("date") Date date) {
+	@GetMapping(value="/getList/{fdate}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<MealVO>> getFoods(@PathVariable("fdate") String fdate) {
 		ResponseEntity<List<MealVO>> entity = null;
 		
 		try {
-			entity = new ResponseEntity<List<MealVO>>(service.getFoods(date), HttpStatus.OK);
+			entity = new ResponseEntity<List<MealVO>>(service.getFoods(fdate), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<List<MealVO>>(HttpStatus.BAD_REQUEST);
@@ -58,12 +57,9 @@ public class RestMealController {
 	public ResponseEntity<String> remove(@PathVariable("fdate") String fdate, @PathVariable("ftime") String ftime) {
 		ResponseEntity<String> entity = null;
 		
-		System.out.println(fdate);
-		System.out.println(ftime);
-		
 		try {
 			service.removeFoods(fdate, ftime);
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);

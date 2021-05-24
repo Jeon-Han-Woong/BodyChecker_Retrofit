@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/goal")
 public class RestGoalController {
 	
-	public ResponseEntity<List<GoalVO>> getGoalList(){
-		
-	}
+//	public ResponseEntity<List<GoalVO>> getGoalList(){
+//		
+//	}
 
 }
