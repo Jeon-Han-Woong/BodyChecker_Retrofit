@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="org.ict.mapper.GoalMapper">
+
+	<select id="getDoing" resultType="org.ict.domain.GoalVO">
+		<![CDATA[
+		SELECT * FROM goal WHERE fin_date > #{fin_date};
+		]]>
+	</select>
+	
+	<select id="getNewGno" resultType="Integer">
+		SELECT max(gno) FROM goal
+	</select>
+
+	<insert id="insertDoing">
+		INSERT INTO goal (gno, gtitle, gcontent, set_date, fin_date, mno) 
+		VALUES (#{gno}, #{gtitle}, #{gcontent}, #{set_date}, #{fin_date}, #{mno});	
+	</insert>
+	
+	<update id="updateDoing">
+		UPDATE goal
+		SET gtitle = #{gtitle}, gcontent = #{gcontent}, fin_date = #{fin_date}
+		WHERE gno = #{gno}
+	</update>
+	
+	<delete id="deleteDoing">
+		DELETE FROM goal
+		WHERE gno = #{gno}
+	</delete>
+	
+</mapper>

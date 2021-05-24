@@ -14,11 +14,11 @@
 	</select>
 	
 	<select id="getEno" resultType="Integer">
-		SELECT MAX(eno) from exercise
+		SELECT max(eno) FROM exercise
 	</select>
 	
 	<insert id="insertExer">
-		INSERT INTO Exercise (ename, ekcal, etime, edate, mno) VALUES(#{ename}, #{ekcal}, #{etime}, #{edate}, #{mno})
+		INSERT INTO Exercise (eno, ename, ekcal, etime, edate, mno) VALUES(#{eno}, #{ename}, #{ekcal}, #{etime}, #{edate}, #{mno})
 	</insert>
 
 	<update id="updateExer">
