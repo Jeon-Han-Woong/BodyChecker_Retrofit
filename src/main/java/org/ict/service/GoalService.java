@@ -15,5 +15,7 @@ public interface GoalService {
 	public void modDoing(GoalVO goal);
 	
 	public void remDoing(int gno);
+	
+	public List<GoalVO> getFinish(String fin_date);
 
 }
