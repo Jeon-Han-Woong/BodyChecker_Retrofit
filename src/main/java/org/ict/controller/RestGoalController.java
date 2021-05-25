@@ -24,6 +24,8 @@ public class RestGoalController {
 	@Autowired
 	private GoalService service;
 	
+	// 진행중인 목표 REST
+	
 	@GetMapping(value="/doing/{fin_date}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<GoalVO>> getGoalList(@PathVariable("fin_date") String fin_date){
 		ResponseEntity<List<GoalVO>> entity = null;
@@ -67,7 +69,7 @@ public class RestGoalController {
 	}
 	
 	@PutMapping(value="/modify/{gno}", consumes="application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> regDoing(@PathVariable("gno") int gno, @RequestBody GoalVO goal){
+	public ResponseEntity<String> regDoing(@RequestBody GoalVO goal, @PathVariable("gno") int gno){
 		ResponseEntity<String> entity = null;
 		
 		try {
@@ -94,6 +96,21 @@ public class RestGoalController {
 		
 		return entity;
 		
+	}
+	
+	// 종료된 목표 REST
+	
+	@GetMapping(value="/finish/{fin_date}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<GoalVO>> getFinList(@PathVariable("fin_date") String fin_date){
+		ResponseEntity<List<GoalVO>> entity = null;
+		
+		try {
+			entity = new ResponseEntity<List<GoalVO>>(service.getDoing(fin_date), HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<List<GoalVO>>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
 	}
 
 }
