@@ -38,6 +38,11 @@ public class GoalServiceImpl implements GoalService{
 		mapper.deleteDoing(gno);
 	}
 
+	@Override
+	public List<GoalVO> getFinish(String fin_date) {
+		return mapper.getFinish(fin_date);
+	}
+
 	
 
 }
