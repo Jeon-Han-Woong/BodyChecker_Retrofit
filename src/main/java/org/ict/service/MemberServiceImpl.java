@@ -17,6 +17,11 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper mapper;
 
 	@Override
+	public MemberVO getInfo(int mno) {
+		return mapper.select(mno);
+	}
+
+	@Override
 	@Transactional
 	public MemberVO login(MemberVO vo) {
 		try {
@@ -24,7 +29,7 @@ public class MemberServiceImpl implements MemberService {
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-		return mapper.select(vo);
+		return mapper.login(vo);
 	}
 
 	@Override

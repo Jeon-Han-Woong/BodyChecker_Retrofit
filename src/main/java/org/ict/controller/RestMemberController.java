@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,22 @@ public class RestMemberController {
 	@Autowired
 	private MemberService service;
 	
-	@PostMapping(value="/login", consumes="application/json", produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/getinfo/{mno}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<MemberVO> getInfo(@PathVariable("mno") int mno) {
+		ResponseEntity<MemberVO> entity = null;
+		
+		try {
+			System.out.println(mno);
+			entity = new ResponseEntity<MemberVO>(service.getInfo(mno), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<MemberVO>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	@PostMapping(value="/login", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<MemberVO> login(@RequestBody MemberVO vo) {
 		ResponseEntity<MemberVO> entity = null;
 		
@@ -36,7 +52,7 @@ public class RestMemberController {
 		return entity;
 	}
 	
-	@PostMapping(value="/join", consumes="application/json", produces= MediaType.TEXT_PLAIN_VALUE)
+	@PostMapping(value="/join", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> join(@RequestBody MemberVO vo) {
 		ResponseEntity<String> entity = null;
 		
@@ -81,15 +97,15 @@ public class RestMemberController {
 		return entity;
 	}//remove
 	
-	@PostMapping(value="/check/{mid}", produces= MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<Integer> check(@PathVariable("mid") String mid) {
-		ResponseEntity<Integer> entity  = null;
+	@PostMapping(value="/check", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> check(@RequestBody String mid) {
+		ResponseEntity<String> entity  = null;
 		
 		try {
-			entity = new ResponseEntity<Integer>(service.check(mid), HttpStatus.OK);
+			entity = new ResponseEntity<String>(String.valueOf(service.check(mid)), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		
 		return entity;

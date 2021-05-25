@@ -238,9 +238,6 @@
 		    <version>2.3.0</version>
 		</dependency>
 		
-		
-		
-		
 		<!-- my end -->  
 	</dependencies>
     <build>

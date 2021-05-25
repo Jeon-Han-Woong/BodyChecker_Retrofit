@@ -24,7 +24,7 @@ public class RestMealController {
 	@Autowired
 	private MealService service;
 	
-	@GetMapping(value="/getList/{fdate}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value="/getlist/{fdate}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<MealVO>> getFoods(@PathVariable("fdate") String fdate) {
 		ResponseEntity<List<MealVO>> entity = null;
 		
