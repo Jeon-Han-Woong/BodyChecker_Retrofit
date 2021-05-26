@@ -16,7 +16,7 @@
 	
 	<update id="update">
 		UPDATE daily
-		SET walk = #{walk} AND water = #{water}
+		SET walk = #{walk}, water = #{water}
 		WHERE ddate = #{ddate}
 	</update>
 

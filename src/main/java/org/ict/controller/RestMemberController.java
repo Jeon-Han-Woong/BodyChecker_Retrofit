@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @RestController
 @RequestMapping("/member/*")
 public class RestMemberController {
@@ -28,7 +31,6 @@ public class RestMemberController {
 		ResponseEntity<MemberVO> entity = null;
 		
 		try {
-			System.out.println(mno);
 			entity = new ResponseEntity<MemberVO>(service.getInfo(mno), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
