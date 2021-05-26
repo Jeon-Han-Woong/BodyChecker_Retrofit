@@ -5,7 +5,7 @@
 <mapper namespace="org.ict.mapper.MemberMapper">
 
 	<select id="select" resultType="org.ict.domain.MemberVO">
-		select mname, gender, height, weight, birthday
+		select mname, gender, height, weight, birthday, regdate, bmi
 		from member where mno = #{mno}
 	</select>
 
@@ -26,8 +26,8 @@
 	
 	<update id="update">
 		UPDATE member
-		SET pwd = #{pwd} AND mname = #{mname} AND gender = #{gender} AND height = #{height}
-		AND weight = #{weight} AND bmi = #{bmi} AND birthday = #{birthday}
+		SET pwd = #{pwd}, mname = #{mname}, gender = #{gender}, height = #{height},
+			weight = #{weight}, bmi = #{bmi}, birthday = #{birthday}
 		WHERE mno = #{mno}
 	</update>
 	
