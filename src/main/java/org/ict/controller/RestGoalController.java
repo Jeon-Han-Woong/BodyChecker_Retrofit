@@ -84,11 +84,11 @@ public class RestGoalController {
 	}
 	
 	@DeleteMapping(value="/remove/{gno}", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> regDoing(@PathVariable("gno") int gno){
+	public ResponseEntity<String> regGoal(@PathVariable("gno") int gno){
 		ResponseEntity<String> entity = null;
 		
 		try {
-			service.remDoing(gno);
+			service.remGoal(gno);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -103,14 +103,37 @@ public class RestGoalController {
 	@GetMapping(value="/finish/{fin_date}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<GoalVO>> getFinList(@PathVariable("fin_date") String fin_date){
 		ResponseEntity<List<GoalVO>> entity = null;
-		
 		try {
-			entity = new ResponseEntity<List<GoalVO>>(service.getDoing(fin_date), HttpStatus.OK);
+			entity = new ResponseEntity<List<GoalVO>>(service.getFinish(fin_date), HttpStatus.OK);
 		} catch (Exception e) {
 			entity = new ResponseEntity<List<GoalVO>>(HttpStatus.BAD_REQUEST);
 		}
-		
 		return entity;
 	}
+	
+	@PutMapping(value="/finish/success/{gno}", consumes="application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> selectSuccess(@PathVariable("gno") int gno, @RequestBody GoalVO goal){
+		ResponseEntity<String> entity = null;
+		try {
+			service.selectSuccess(goal);
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		} catch(Exception e) {
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+//	@PutMapping(value="/finish/fail/{gno}", consumes="application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+//	public ResponseEntity<String> selectFail(@PathVariable("gno") int gno){
+//		ResponseEntity<String> entity = null;
+//		try {
+//			service.selectFail(gno);
+//			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+//		} catch(Exception e) {
+//			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+//		}
+//		return entity;
+//	}
+
 
 }

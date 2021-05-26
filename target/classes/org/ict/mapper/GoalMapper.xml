@@ -27,7 +27,7 @@
 		WHERE gno = #{gno}
 	</update>
 	
-	<delete id="deleteDoing">
+	<delete id="deleteGoal">
 		DELETE FROM goal
 		WHERE gno = #{gno}
 	</delete>
@@ -36,10 +36,14 @@
 	
 	<select id="getFinish" resultType="org.ict.domain.GoalVO">
 		<![CDATA[
-		SELECT * FROM goal WHERE fin_date <= #{fin_date} ORDER BY fin_date;
+		SELECT * FROM goal WHERE fin_date <= #{fin_date} ORDER BY gsts, fin_date;
 		]]>
 	</select>
-
 	
+	<update id="selectSuccess">
+		UPDATE goal
+		SET gsts = #{gsts}
+		WHERE gno = #{gno}
+	</update>
 	
 </mapper>

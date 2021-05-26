@@ -14,8 +14,11 @@ public interface GoalService {
 	
 	public void modDoing(GoalVO goal);
 	
-	public void remDoing(int gno);
+	public void remGoal(int gno);
 	
 	public List<GoalVO> getFinish(String fin_date);
+	
+	public void selectSuccess(GoalVO goal);
+	
 
 }

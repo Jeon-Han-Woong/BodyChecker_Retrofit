@@ -16,10 +16,13 @@ public interface GoalMapper {
 	
 	public void updateDoing(GoalVO goal);
 	
-	public void deleteDoing(int gno);
+	public void deleteGoal(int gno);
 	
 	// 종료된 목표
 	
 	public List<GoalVO> getFinish(String fin_date);
+	
+	public void selectSuccess(GoalVO goal);
+
 
 }
