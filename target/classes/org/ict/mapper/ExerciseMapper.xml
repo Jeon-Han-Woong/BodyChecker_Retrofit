@@ -14,6 +14,11 @@
 		SELECT max(eno) FROM exercise
 	</select>
 	
+	<select id="getSumKcal" resultType="Integer">
+		SELECT SUM(ekcal) FROM exercise
+		WHERE edate = #{edate}
+	</select>
+	
 	<insert id="insertExer">
 		INSERT INTO Exercise (eno, ename, ekcal, etime, edate, mno) VALUES(#{eno}, #{ename}, #{ekcal}, #{etime}, #{edate}, #{mno})
 	</insert>

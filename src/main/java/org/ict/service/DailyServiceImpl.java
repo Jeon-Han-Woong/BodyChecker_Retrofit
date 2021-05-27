@@ -4,6 +4,7 @@ import org.ict.domain.DailyVO;
 import org.ict.mapper.DailyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DailyServiceImpl implements DailyService {
@@ -25,5 +26,25 @@ public class DailyServiceImpl implements DailyService {
 	public void modifyDaily(DailyVO vo) {
 		mapper.update(vo);
 	}
+
+	@Override
+	public Integer getDailyWater(String ddate, int mno) {
+		return mapper.getDailyWater(ddate, mno);
+	}
+
+	@Transactional
+	@Override
+	public Integer plusWater(String ddate, int mno) {
+		mapper.updateWater(+1, ddate, mno);
+		return mapper.getDailyWater(ddate, mno);
+	}
+
+	@Transactional
+	@Override
+	public Integer minusWater(String ddate, int mno) {
+		mapper.updateWater(-1, ddate, mno);
+		return mapper.getDailyWater(ddate, mno);
+	}
+	
 	
 }

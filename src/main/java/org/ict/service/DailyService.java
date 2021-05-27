@@ -10,4 +10,10 @@ public interface DailyService {
 	
 	public void modifyDaily(DailyVO vo);
 	
+	public Integer getDailyWater(String ddate, int mno);
+	
+	public Integer plusWater(String ddate, int mno);
+	
+	public Integer minusWater(String ddate, int mno);
+	
 }

@@ -10,6 +10,8 @@ public interface ExerciseMapper {
 	
 	public Integer getEno();
 	
+	public Integer getSumKcal(String edate);
+	
 	public void insertExer(ExerciseVO exer);
 	
 	public void updateExer(ExerciseVO exer);
