@@ -34,14 +34,21 @@ public class GoalServiceImpl implements GoalService{
 	}
 
 	@Override
-	public void remDoing(int gno) {
-		mapper.deleteDoing(gno);
+	public void remGoal(int gno) {
+		mapper.deleteGoal(gno);
 	}
 
 	@Override
 	public List<GoalVO> getFinish(String fin_date) {
 		return mapper.getFinish(fin_date);
 	}
+
+	@Override
+	public void selectSuccess(GoalVO goal) {
+		mapper.selectSuccess(goal);
+	}
+
+	
 
 	
 
