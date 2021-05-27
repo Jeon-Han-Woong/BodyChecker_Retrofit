@@ -10,6 +10,8 @@ public interface ExerciseService {
 	
 	public Integer getEno();
 	
+	public Integer getSumKcal(String edate);
+	
 	public void regExer(ExerciseVO exer);
 	
 	public void modiExer(ExerciseVO exer);

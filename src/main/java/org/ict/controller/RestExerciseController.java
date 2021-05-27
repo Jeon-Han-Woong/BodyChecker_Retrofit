@@ -26,7 +26,7 @@ public class RestExerciseController {
 	
 	@Autowired ExerciseService service;
 	
-	@GetMapping(value="/{edate}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/{edate}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<ExerciseVO>> getExerList(@PathVariable("edate") String edate){
 		 
 		ResponseEntity<List<ExerciseVO>> entity = null;
@@ -37,6 +37,20 @@ public class RestExerciseController {
 			e.printStackTrace();
 			entity = new ResponseEntity<List<ExerciseVO>>(HttpStatus.BAD_REQUEST);
 		}
+		return entity;
+	}
+	
+	@GetMapping(value="/kcal/{edate}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Integer> getSumKcal(@PathVariable("edate") String edate){
+		ResponseEntity<Integer> entity = null;
+		
+		try {
+			entity = new ResponseEntity<Integer>(service.getSumKcal(edate), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		
 		return entity;
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,6 +63,39 @@ public class RestDailyController {
 			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		
+		return entity;
+	}
+	
+	@GetMapping(value="/water/get/{ddate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Integer> getDailyWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
+		ResponseEntity<Integer> entity = null;
+		try {
+			entity = new ResponseEntity<Integer>(service.getDailyWater(ddate, mno), HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	@GetMapping(value="/water/plus/{ddate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Integer> plusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
+		ResponseEntity<Integer> entity = null;
+		try {
+			entity = new ResponseEntity<Integer>(service.plusWater(ddate, mno), HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	@GetMapping(value="/water/minus/{ddate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Integer> minusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
+		ResponseEntity<Integer> entity = null;
+		try {
+			entity = new ResponseEntity<Integer>(service.minusWater(ddate, mno), HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
 		return entity;
 	}
 	

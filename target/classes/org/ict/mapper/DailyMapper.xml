@@ -19,5 +19,17 @@
 		SET walk = #{walk}, water = #{water}
 		WHERE ddate = #{ddate}
 	</update>
-
+	
+	<select id="getDailyWater" resultType="Integer">
+		SELECT water
+		FROM daily
+		WHERE ddate = #{ddate} and mno = #{mno}
+	</select>
+	
+	<update id="updateWater">
+		UPDATE daily
+		SET water = water + #{amount}
+		WHERE ddate = #{ddate} and mno = #{mno}
+	</update>
+		
 </mapper>

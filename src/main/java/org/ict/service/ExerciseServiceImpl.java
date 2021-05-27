@@ -21,6 +21,11 @@ public class ExerciseServiceImpl implements ExerciseService {
 	public Integer getEno() {
 		return mapper.getEno();
 	}
+	
+	@Override
+	public Integer getSumKcal(String edate) {
+		return mapper.getSumKcal(edate);
+	}
 
 	@Override
 	public void regExer(ExerciseVO exer) {
