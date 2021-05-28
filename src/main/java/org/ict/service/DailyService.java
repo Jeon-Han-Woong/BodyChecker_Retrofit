@@ -10,8 +10,8 @@ public interface DailyService {
 	
 	public Integer getDailyWater(String ddate, int mno);
 	
-	public Integer plusWater(String ddate, int mno);
+	public void plusWater(String ddate, int mno);
 	
-	public Integer minusWater(String ddate, int mno);
+	public void minusWater(String ddate, int mno);
 	
 }

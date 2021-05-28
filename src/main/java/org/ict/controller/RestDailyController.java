@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,7 +57,7 @@ public class RestDailyController {
 		return entity;
 	}
 	
-	@GetMapping(value="/water/get/{ddate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/water/get/{ddate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<Integer> getDailyWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
 		ResponseEntity<Integer> entity = null;
 		try {
@@ -67,24 +68,26 @@ public class RestDailyController {
 		return entity;
 	}
 	
-	@GetMapping(value="/water/plus/{ddate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<Integer> plusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
-		ResponseEntity<Integer> entity = null;
+	@PutMapping(value="/water/plus/{ddate}/{mno}", consumes="application/json", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> plusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
+		ResponseEntity<String> entity = null;
 		try {
-			entity = new ResponseEntity<Integer>(service.plusWater(ddate, mno), HttpStatus.OK);
+			service.plusWater(ddate, mno);
+			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		} catch (Exception e) {
-			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
 	
-	@GetMapping(value="/water/minus/{ddate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<Integer> minusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
-		ResponseEntity<Integer> entity = null;
+	@PutMapping(value="/water/plus/{ddate}/{mno}", consumes="application/json", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<String> minusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
+		ResponseEntity<String> entity = null;
 		try {
-			entity = new ResponseEntity<Integer>(service.minusWater(ddate, mno), HttpStatus.OK);
+			service.minusWater(ddate, mno);
+			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		} catch (Exception e) {
-			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}

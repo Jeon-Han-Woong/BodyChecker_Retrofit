@@ -28,18 +28,15 @@ public class DailyServiceImpl implements DailyService {
 		return mapper.getDailyWater(ddate, mno);
 	}
 
-	@Transactional
+
 	@Override
-	public Integer plusWater(String ddate, int mno) {
+	public void plusWater(String ddate, int mno) {
 		mapper.updateWater(+1, ddate, mno);
-		return mapper.getDailyWater(ddate, mno);
 	}
 
-	@Transactional
 	@Override
-	public Integer minusWater(String ddate, int mno) {
+	public void minusWater(String ddate, int mno) {
 		mapper.updateWater(-1, ddate, mno);
-		return mapper.getDailyWater(ddate, mno);
 	}
 	
 	
