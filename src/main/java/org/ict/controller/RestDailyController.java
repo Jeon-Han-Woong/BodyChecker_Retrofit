@@ -67,22 +67,23 @@ public class RestDailyController {
 		}
 		return entity;
 	}
-	
-	@PutMapping(value="/water/plus/{ddate}/{mno}", consumes="application/json", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> plusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
-		ResponseEntity<String> entity = null;
+
+	@RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value="/water/plus/{ddate}/{mno}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Integer> plusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
+		ResponseEntity<Integer> entity = null;
 		try {
-			service.plusWater(ddate, mno);
-			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+			log.info(ddate);
+			entity = new ResponseEntity<Integer>(service.plusWater(ddate, mno), HttpStatus.OK);
+
 		} catch (Exception e) {
 			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
-	
-	@PutMapping(value="/water/plus/{ddate}/{mno}", consumes="application/json", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<String> minusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
-		ResponseEntity<String> entity = null;
+
+	@RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value="/water/minus/{ddate}/{mno}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Integer> minusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
+		ResponseEntity<Integer> entity = null;
 		try {
 			service.minusWater(ddate, mno);
 			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
