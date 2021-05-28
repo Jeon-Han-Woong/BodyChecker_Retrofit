@@ -7,10 +7,10 @@ import org.ict.domain.MealVO;
 
 public interface MealMapper {
 	
-	public List<MealVO> select(String fdate);
+	public List<MealVO> select(@Param("fdate")String fdate,@Param("mno") int mno);
 	
 	public void insert(MealVO vo);
 	
-	public void delete(@Param("fdate") String fdate, @Param("ftime") String ftime);
+	public void delete(@Param("fdate") String fdate, @Param("ftime") String ftime, @Param("mno") int mno);
 	
 }

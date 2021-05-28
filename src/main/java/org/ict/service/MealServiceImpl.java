@@ -14,8 +14,8 @@ public class MealServiceImpl implements MealService {
 	private MealMapper mapper;
 	
 	@Override
-	public List<MealVO> getFoods(String fdate) {
-		return mapper.select(fdate);
+	public List<MealVO> getFoods(String fdate, int mno) {
+		return mapper.select(fdate, mno);
 	}
 
 	@Override
@@ -24,8 +24,8 @@ public class MealServiceImpl implements MealService {
 	}
 
 	@Override
-	public void removeFoods(String fdate, String ftime) {
-		mapper.delete(fdate, ftime);
+	public void removeFoods(String fdate, String ftime, int mno) {
+		mapper.delete(fdate, ftime, mno);
 	}
 
 }

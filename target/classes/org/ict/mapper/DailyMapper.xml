@@ -10,15 +10,9 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO meal(dno, walk, water, ddate, mno)
-		VALUES(#{dno}, #{walk}, #{water}, #{ddate}, #{mno})
+		INSERT INTO daily(walk, water, ddate, mno)
+		VALUES(0, 0, #{ddate}, #{mno})
 	</insert>
-	
-	<update id="update">
-		UPDATE daily
-		SET walk = #{walk}, water = #{water}
-		WHERE ddate = #{ddate}
-	</update>
 	
 	<select id="getDailyWater" resultType="Integer">
 		SELECT water

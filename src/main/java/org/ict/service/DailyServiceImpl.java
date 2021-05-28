@@ -22,10 +22,6 @@ public class DailyServiceImpl implements DailyService {
 		return mapper.select(date);
 	}
 
-	@Override
-	public void modifyDaily(DailyVO vo) {
-		mapper.update(vo);
-	}
 
 	@Override
 	public Integer getDailyWater(String ddate, int mno) {

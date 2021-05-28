@@ -5,8 +5,8 @@
 <mapper namespace="org.ict.mapper.MealMapper">
 
 	<select id="select" resultType="org.ict.domain.MealVO">
-		SELECT fno, ftime, fname, fkcal, fdate, mno
-		FROM meal WHERE fdate = #{fdate}
+		SELECT fno, ftime, fname, fkcal, fdate
+		FROM meal WHERE fdate = #{fdate} AND mno = #{mno}
 	</select>
 	
 	<insert id="insert">
@@ -16,7 +16,7 @@
 	
 	<delete id="delete">
 		DELETE FROM meal
-		WHERE fdate = #{fdate} AND ftime = #{ftime}
+		WHERE fdate = #{fdate} AND ftime = #{ftime} AND mno = #{mno}
 	</delete>
 
 </mapper>
