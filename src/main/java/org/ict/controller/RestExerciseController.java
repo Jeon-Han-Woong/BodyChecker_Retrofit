@@ -23,7 +23,7 @@ public class RestExerciseController {
 	
 	@Autowired ExerciseService service;
 	
-	@GetMapping(value="/{edate}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/{edate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<ExerciseVO>> getExerList(@PathVariable("edate") String edate, @PathVariable("mno") int mno){
 		 
 		ResponseEntity<List<ExerciseVO>> entity = null;
@@ -37,7 +37,7 @@ public class RestExerciseController {
 		return entity;
 	}
 	
-	@GetMapping(value="/kcal/{edate}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/kcal/{edate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<Integer> getSumKcal(@PathVariable("edate") String edate, @PathVariable("mno") int mno){
 		ResponseEntity<Integer> entity = null;
 		
