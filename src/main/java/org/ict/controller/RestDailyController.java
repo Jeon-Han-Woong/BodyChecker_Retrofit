@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @RestController
 @RequestMapping("/daily/*")
 public class RestDailyController {
@@ -36,27 +39,14 @@ public class RestDailyController {
 		return entity;
 	}
 	
-	@PostMapping(value="/add", consumes="application/json", produces= MediaType.TEXT_PLAIN_VALUE)
+	@PostMapping(value="/addDaily", consumes="application/json", produces= MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> addDaily(@RequestBody DailyVO vo) {
 		ResponseEntity<String> entity = null;
 		
+		log.info(vo.getMno());
+		
 		try {
 			service.addDaily(vo);
-			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-		}
-		
-		return entity;
-	}
-	
-	@RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value="/modify", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> modifyDaily(@RequestBody DailyVO vo) {
-		ResponseEntity<String> entity = null;
-		
-		try {
-			service.modifyDaily(vo);
 			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

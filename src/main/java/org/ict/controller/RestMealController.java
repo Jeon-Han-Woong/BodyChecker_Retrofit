@@ -24,12 +24,12 @@ public class RestMealController {
 	@Autowired
 	private MealService service;
 	
-	@GetMapping(value="/getlist/{fdate}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<MealVO>> getFoods(@PathVariable("fdate") String fdate) {
+	@GetMapping(value="/getlist/{fdate}/{mno}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<MealVO>> getFoods(@PathVariable("fdate") String fdate, @PathVariable("mno") int mno) {
 		ResponseEntity<List<MealVO>> entity = null;
 		
 		try {
-			entity = new ResponseEntity<List<MealVO>>(service.getFoods(fdate), HttpStatus.OK);
+			entity = new ResponseEntity<List<MealVO>>(service.getFoods(fdate, mno), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<List<MealVO>>(HttpStatus.BAD_REQUEST);
@@ -53,12 +53,12 @@ public class RestMealController {
 		return entity;
 	}//addFoods
 	
-	@DeleteMapping(value="/remove/{fdate}/{ftime}", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> remove(@PathVariable("fdate") String fdate, @PathVariable("ftime") String ftime) {
+	@DeleteMapping(value="/remove/{fdate}/{ftime}/{mno}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("fdate") String fdate, @PathVariable("ftime") String ftime, @PathVariable("mno") int mno) {
 		ResponseEntity<String> entity = null;
 		
 		try {
-			service.removeFoods(fdate, ftime);
+			service.removeFoods(fdate, ftime, mno);
 			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

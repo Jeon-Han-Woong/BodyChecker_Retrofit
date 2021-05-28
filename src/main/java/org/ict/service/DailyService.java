@@ -8,8 +8,6 @@ public interface DailyService {
 	
 	public DailyVO getDaily(String date);
 	
-	public void modifyDaily(DailyVO vo);
-	
 	public Integer getDailyWater(String ddate, int mno);
 	
 	public Integer plusWater(String ddate, int mno);
