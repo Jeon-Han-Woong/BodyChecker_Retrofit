@@ -67,7 +67,7 @@ public class RestDailyController {
 		return entity;
 	}
 	
-	@RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value="/water/plus/{ddate}/{mno}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@RequestMapping(method={RequestMethod.PUT, RequestMethod.PATCH}, value="/water/plus/{ddate}/{mno}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<Integer> plusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
 		ResponseEntity<Integer> entity = null;
 		try {
@@ -79,7 +79,7 @@ public class RestDailyController {
 		return entity;
 	}
 	
-	@RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value="/water/minus/{ddate}/{mno}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@RequestMapping(method={RequestMethod.PUT, RequestMethod.PATCH}, value="/water/minus/{ddate}/{mno}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<Integer> minusWater(@PathVariable("ddate") String ddate, @PathVariable("mno") int mno) {
 		ResponseEntity<Integer> entity = null;
 		try {
