@@ -41,7 +41,7 @@ public class RestExerciseController {
 	}
 	
 	@GetMapping(value="/kcal/{edate}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<Integer> getSumKcal(@PathVariable("edate") String edate, @PathVariable("edate") int mno){
+	public ResponseEntity<Integer> getSumKcal(@PathVariable("edate") String edate, @PathVariable("mno") int mno){
 		ResponseEntity<Integer> entity = null;
 		
 		try {
