@@ -6,11 +6,11 @@ import org.ict.domain.ExerciseVO;
 
 public interface ExerciseService {
 	
-	public List<ExerciseVO> getAll(String edate);
+	public List<ExerciseVO> getAll(String edate, int mno);
 	
 	public Integer getEno();
 	
-	public Integer getSumKcal(String edate);
+	public Integer getSumKcal(String edate, int mno);
 	
 	public void regExer(ExerciseVO exer);
 	

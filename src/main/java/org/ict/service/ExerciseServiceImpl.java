@@ -13,8 +13,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 	@Autowired ExerciseMapper mapper;
 	
 	@Override
-	public List<ExerciseVO> getAll(String edate) {
-		return mapper.getList(edate);
+	public List<ExerciseVO> getAll(String edate, int mno) {
+		return mapper.getList(edate, mno);
 	}
 	
 	@Override
@@ -23,8 +23,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 	}
 	
 	@Override
-	public Integer getSumKcal(String edate) {
-		return mapper.getSumKcal(edate);
+	public Integer getSumKcal(String edate, int mno) {
+		return mapper.getSumKcal(edate, mno);
 	}
 
 	@Override

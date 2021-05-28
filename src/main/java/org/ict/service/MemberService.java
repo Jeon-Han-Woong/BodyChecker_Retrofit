@@ -6,7 +6,7 @@ public interface MemberService {
 	
 	public MemberVO getInfo(int mno);
 	
-	public MemberVO login(MemberVO vo);
+	public Integer login(String mid, String pwd);
 	
 	public void join(MemberVO vo);
 	

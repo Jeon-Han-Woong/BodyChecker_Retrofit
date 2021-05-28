@@ -23,13 +23,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	@Transactional
-	public MemberVO login(MemberVO vo) {
-		try {
-			vo.setPwd(encode(vo.getPwd()));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		return mapper.login(vo);
+	public Integer login(String mid, String pwd) {
+//		try {
+//			vo.setPwd(encode(vo.getPwd()));
+//		} catch (NoSuchAlgorithmException e) {
+//			e.printStackTrace();
+//		}
+		return mapper.login(mid, pwd);
 	}
 
 	@Override

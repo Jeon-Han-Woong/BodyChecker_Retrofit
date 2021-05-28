@@ -7,7 +7,7 @@
 
 	<select id="getList" resultType="org.ict.domain.ExerciseVO">
 
-		SELECT * FROM exercise WHERE edate = #{edate}
+		SELECT * FROM exercise WHERE edate = #{edate} and mno = #{mno}
 	</select>
 	
 	<select id="getEno" resultType="Integer">
@@ -16,7 +16,7 @@
 	
 	<select id="getSumKcal" resultType="Integer">
 		SELECT SUM(ekcal) FROM exercise
-		WHERE edate = #{edate}
+		WHERE edate = #{edate} and mno = #{mno}
 	</select>
 	
 	<insert id="insertExer">

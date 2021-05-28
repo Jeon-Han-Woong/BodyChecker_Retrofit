@@ -9,9 +9,9 @@
 		from member where mno = #{mno}
 	</select>
 
-	<select id="login" resultType="org.ict.domain.MemberVO">
-		SELECT mno, mid, pwd, mname, gender, height, weight, bmi, birthday, regdate
-		FROM member WHERE mid = #{mid} AND pwd = #{pwd}
+	<select id="login" resultType="Integer">
+		SELECT mno FROM member 
+		WHERE mid = #{mid} AND pwd = #{pwd}
 	</select>
 	
 	<select id="check" resultType="int">

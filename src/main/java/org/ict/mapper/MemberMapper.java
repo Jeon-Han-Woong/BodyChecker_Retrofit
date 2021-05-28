@@ -1,12 +1,13 @@
 package org.ict.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.ict.domain.MemberVO;
 
 public interface MemberMapper {
 	
 	public MemberVO select(int mno);
 	
-	public MemberVO login(MemberVO vo);
+	public Integer login(@Param("mid") String mid, @Param("pwd") String pwd);
 	
 	public void insert(MemberVO vo);
 	

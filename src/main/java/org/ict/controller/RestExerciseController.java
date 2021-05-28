@@ -27,12 +27,12 @@ public class RestExerciseController {
 	@Autowired ExerciseService service;
 	
 	@GetMapping(value="/{edate}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ExerciseVO>> getExerList(@PathVariable("edate") String edate){
+	public ResponseEntity<List<ExerciseVO>> getExerList(@PathVariable("edate") String edate, @PathVariable("mno") int mno){
 		 
 		ResponseEntity<List<ExerciseVO>> entity = null;
 		
 		try {
-			entity = new ResponseEntity<List<ExerciseVO>>(service.getAll(edate), HttpStatus.OK);
+			entity = new ResponseEntity<List<ExerciseVO>>(service.getAll(edate, mno), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<List<ExerciseVO>>(HttpStatus.BAD_REQUEST);
@@ -41,11 +41,11 @@ public class RestExerciseController {
 	}
 	
 	@GetMapping(value="/kcal/{edate}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<Integer> getSumKcal(@PathVariable("edate") String edate){
+	public ResponseEntity<Integer> getSumKcal(@PathVariable("edate") String edate, @PathVariable("edate") int mno){
 		ResponseEntity<Integer> entity = null;
 		
 		try {
-			entity = new ResponseEntity<Integer>(service.getSumKcal(edate), HttpStatus.OK);
+			entity = new ResponseEntity<Integer>(service.getSumKcal(edate, mno), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
