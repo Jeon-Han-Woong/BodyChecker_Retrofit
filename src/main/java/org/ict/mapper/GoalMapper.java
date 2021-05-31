@@ -23,6 +23,9 @@ public interface GoalMapper {
 	public List<GoalVO> getFinish(String fin_date);
 	
 	public void selectSuccess(GoalVO goal);
+	
+	public int getTotal();
 
-
+	public int getSuccessFinish();
+	
 }

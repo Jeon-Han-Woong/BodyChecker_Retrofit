@@ -20,5 +20,8 @@ public interface GoalService {
 	
 	public void selectSuccess(GoalVO goal);
 	
-
+	public int getTotal();
+	
+	public int getSuccessFinish();
+	
 }
