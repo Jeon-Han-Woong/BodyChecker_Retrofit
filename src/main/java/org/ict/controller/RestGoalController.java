@@ -26,7 +26,7 @@ public class RestGoalController {
 	
 	// 진행중인 목표 REST
 	
-	@GetMapping(value="/doing/{fin_date}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@GetMapping(value="/doing/{fin_date}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<GoalVO>> getGoalList(@PathVariable("fin_date") String fin_date){
 		ResponseEntity<List<GoalVO>> entity = null;
 		
