@@ -2,13 +2,14 @@ package org.ict.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.ict.domain.GoalVO;
 
 public interface GoalMapper {
 	
 	// 진행중인 목표
 	
-	public List<GoalVO> getDoing(String fin_date);
+	public List<GoalVO> getDoing(@Param("fin_date") String fin_date, @Param("mno") int mno);
 	
 	public Integer getNewGno();
 	
@@ -20,12 +21,12 @@ public interface GoalMapper {
 	
 	// 종료된 목표
 	
-	public List<GoalVO> getFinish(String fin_date);
+	public List<GoalVO> getFinish(@Param("fin_date") String fin_date, @Param("mno") int mno);
 	
 	public void selectSuccess(GoalVO goal);
 	
-	public int getTotal();
+	public int getTotal(int mno);
 
-	public int getSuccessFinish();
+	public int getSuccessFinish(int mno);
 	
 }

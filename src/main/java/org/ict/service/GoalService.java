@@ -6,7 +6,7 @@ import org.ict.domain.GoalVO;
 
 public interface GoalService {
 	
-	public List<GoalVO> getDoing(String fin_date);
+	public List<GoalVO> getDoing(String fin_date, int mno);
 	
 	public Integer getNewGno();
 	
@@ -16,12 +16,12 @@ public interface GoalService {
 	
 	public void remGoal(int gno);
 	
-	public List<GoalVO> getFinish(String fin_date);
+	public List<GoalVO> getFinish(String fin_date, int mno);
 	
 	public void selectSuccess(GoalVO goal);
 	
-	public int getTotal();
+	public int getTotal(int mno);
 	
-	public int getSuccessFinish();
+	public int getSuccessFinish(int mno);
 	
 }
