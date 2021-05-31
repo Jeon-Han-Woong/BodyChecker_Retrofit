@@ -48,8 +48,14 @@ public class GoalServiceImpl implements GoalService{
 		mapper.selectSuccess(goal);
 	}
 
-	
+	@Override
+	public int getSuccessFinish() {
+		return mapper.getSuccessFinish();
+	}
 
-	
+	@Override
+	public int getTotal() {
+		return mapper.getTotal();
+	}
 
 }

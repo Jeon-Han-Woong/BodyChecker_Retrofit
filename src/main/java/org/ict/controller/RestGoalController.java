@@ -123,6 +123,34 @@ public class RestGoalController {
 		return entity;
 	}
 	
+	@GetMapping(value="/total", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> getTotal() {
+		ResponseEntity<Integer> entity = null;
+		
+		try {
+			entity = new ResponseEntity<Integer>(service.getTotal(), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	@GetMapping(value="/success/finish", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> getSuccessFinish() {
+		ResponseEntity<Integer> entity = null;
+		
+		try {
+			entity = new ResponseEntity<Integer>(service.getSuccessFinish(), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
 //	@PutMapping(value="/finish/fail/{gno}", consumes="application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 //	public ResponseEntity<String> selectFail(@PathVariable("gno") int gno){
 //		ResponseEntity<String> entity = null;

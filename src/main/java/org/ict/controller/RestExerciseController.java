@@ -42,6 +42,7 @@ public class RestExerciseController {
 		ResponseEntity<Integer> entity = null;
 		
 		try {
+			System.out.println(mno);
 			entity = new ResponseEntity<Integer>(service.getSumKcal(edate, mno), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
