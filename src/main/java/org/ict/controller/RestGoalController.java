@@ -26,12 +26,12 @@ public class RestGoalController {
 	
 	// 진행중인 목표 REST
 	
-	@GetMapping(value="/doing/{fin_date}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<GoalVO>> getGoalList(@PathVariable("fin_date") String fin_date){
+	@GetMapping(value="/doing/{fin_date}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<GoalVO>> getGoalList(@PathVariable("fin_date") String fin_date, @PathVariable("mno") int mno){
 		ResponseEntity<List<GoalVO>> entity = null;
 		
 		try {
-			entity = new ResponseEntity<List<GoalVO>>(service.getDoing(fin_date), HttpStatus.OK);
+			entity = new ResponseEntity<List<GoalVO>>(service.getDoing(fin_date, mno), HttpStatus.OK);
 		} catch (Exception e) {
 			entity = new ResponseEntity<List<GoalVO>>(HttpStatus.BAD_REQUEST);
 		}
@@ -100,11 +100,11 @@ public class RestGoalController {
 	
 	// 종료된 목표 REST
 	
-	@GetMapping(value="/finish/{fin_date}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<GoalVO>> getFinList(@PathVariable("fin_date") String fin_date){
+	@GetMapping(value="/finish/{fin_date}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<GoalVO>> getFinList(@PathVariable("fin_date") String fin_date, @PathVariable("mno") int mno){
 		ResponseEntity<List<GoalVO>> entity = null;
 		try {
-			entity = new ResponseEntity<List<GoalVO>>(service.getFinish(fin_date), HttpStatus.OK);
+			entity = new ResponseEntity<List<GoalVO>>(service.getFinish(fin_date, mno), HttpStatus.OK);
 		} catch (Exception e) {
 			entity = new ResponseEntity<List<GoalVO>>(HttpStatus.BAD_REQUEST);
 		}
@@ -123,12 +123,12 @@ public class RestGoalController {
 		return entity;
 	}
 	
-	@GetMapping(value="/total", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Integer> getTotal() {
+	@GetMapping(value="/total/{mno}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> getTotal(@PathVariable("mno") int mno) {
 		ResponseEntity<Integer> entity = null;
 		
 		try {
-			entity = new ResponseEntity<Integer>(service.getTotal(), HttpStatus.OK);
+			entity = new ResponseEntity<Integer>(service.getTotal(mno), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
@@ -137,12 +137,12 @@ public class RestGoalController {
 		return entity;
 	}
 	
-	@GetMapping(value="/success/finish", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Integer> getSuccessFinish() {
+	@GetMapping(value="/success/finish/{mno}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> getSuccessFinish(@PathVariable("mno") int mno) {
 		ResponseEntity<Integer> entity = null;
 		
 		try {
-			entity = new ResponseEntity<Integer>(service.getSuccessFinish(), HttpStatus.OK);
+			entity = new ResponseEntity<Integer>(service.getSuccessFinish(mno), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);

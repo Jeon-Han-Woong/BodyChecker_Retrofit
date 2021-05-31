@@ -14,8 +14,8 @@ public class GoalServiceImpl implements GoalService{
 	private GoalMapper mapper;
 	
 	@Override
-	public List<GoalVO> getDoing(String fin_date) {
-		return mapper.getDoing(fin_date);
+	public List<GoalVO> getDoing(String fin_date, int mno) {
+		return mapper.getDoing(fin_date, mno);
 	}
 	
 	@Override
@@ -39,8 +39,8 @@ public class GoalServiceImpl implements GoalService{
 	}
 
 	@Override
-	public List<GoalVO> getFinish(String fin_date) {
-		return mapper.getFinish(fin_date);
+	public List<GoalVO> getFinish(String fin_date, int mno) {
+		return mapper.getFinish(fin_date, mno);
 	}
 
 	@Override
@@ -49,13 +49,13 @@ public class GoalServiceImpl implements GoalService{
 	}
 
 	@Override
-	public int getSuccessFinish() {
-		return mapper.getSuccessFinish();
+	public int getSuccessFinish(int mno) {
+		return mapper.getSuccessFinish(mno);
 	}
 
 	@Override
-	public int getTotal() {
-		return mapper.getTotal();
+	public int getTotal(int mno) {
+		return mapper.getTotal(mno);
 	}
 
 }
