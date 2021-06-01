@@ -24,4 +24,6 @@ public interface GoalService {
 	
 	public int getSuccessFinish(int mno);
 	
+	public GoalVO getDday(String fin_date, int mno);
+	
 }

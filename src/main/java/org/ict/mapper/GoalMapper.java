@@ -29,4 +29,8 @@ public interface GoalMapper {
 
 	public int getSuccessFinish(int mno);
 	
+	// 메인에 표출되는 종료일이 가장 가까운 목표
+	
+	public GoalVO getDday(@Param("fin_date") String fin_date, @Param("mno") int mno);
+	
 }
