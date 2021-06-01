@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.log4j.Log4j;
+
 @RestController
 @RequestMapping("/goal")
+@Log4j
 public class RestGoalController {
 	
 	@Autowired
@@ -148,6 +151,21 @@ public class RestGoalController {
 			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
 		}
 		
+		return entity;
+	}
+	
+	@GetMapping(value="/dday/{fin_date}/{mno}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<GoalVO> getDday(@PathVariable("fin_date") String fin_date, @PathVariable("mno") int mno) {
+		ResponseEntity<GoalVO> entity = null;
+		
+		try {
+			entity = new ResponseEntity<GoalVO>(service.getDday(fin_date, mno), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<GoalVO>(HttpStatus.BAD_REQUEST);
+		}
+		
+		log.info(mno);
 		return entity;
 	}
 	

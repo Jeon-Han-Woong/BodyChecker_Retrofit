@@ -58,4 +58,9 @@ public class GoalServiceImpl implements GoalService{
 		return mapper.getTotal(mno);
 	}
 
+	@Override
+	public GoalVO getDday(String fin_date, int mno) {
+		return mapper.getDday(fin_date, mno);
+	}
+
 }
