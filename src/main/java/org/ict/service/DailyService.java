@@ -14,4 +14,8 @@ public interface DailyService {
 	
 	public Integer minusWater(String ddate, int mno);
 	
+	public Integer getWalk(String ddate, int mno);
+	
+	public void addWalk(String ddate, int mno);
+	
 }

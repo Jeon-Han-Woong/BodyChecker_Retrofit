@@ -41,6 +41,15 @@ public class DailyServiceImpl implements DailyService {
 		mapper.updateWater(-1, ddate, mno);
 		return mapper.getDailyWater(ddate, mno);
 	}
-	
+
+	@Override
+	public Integer getWalk(String ddate, int mno) {
+		return mapper.getWalk(ddate, mno);
+	}
+
+	@Override
+	public void addWalk(String ddate, int mno) {
+		mapper.addWalk(ddate, mno, 1);
+	}
 	
 }

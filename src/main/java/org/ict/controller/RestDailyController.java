@@ -1,5 +1,8 @@
 package org.ict.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.ict.domain.DailyVO;
 import org.ict.service.DailyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,8 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/daily/*")
 public class RestDailyController {
 	final String SUCCESS = "SUCCESS";
+	
+	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
 	@Autowired
 	private DailyService service;
@@ -90,5 +95,29 @@ public class RestDailyController {
 		}
 		return entity;
 	}
+	
+	@GetMapping(value="/getwalk/{mno}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> getWalk(@PathVariable("mno") int mno) {
+		ResponseEntity<Integer> entity = null;
+		
+		try {
+			entity = new ResponseEntity<Integer>(service.getWalk(format.format(LocalDate.now()), mno), HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}//getWalk
+	
+	@RequestMapping(method={RequestMethod.PUT, RequestMethod.PATCH}, value="/addwalk/{mno}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> addWalk(@PathVariable("mno") int mno) {
+		ResponseEntity<String> entity = null;
+		try {
+			service.addWalk(format.format(LocalDate.now()), mno);
+			entity = new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}//addWalk
 	
 }//class
