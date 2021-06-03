@@ -40,12 +40,12 @@ public class RestMemberController {
 		return entity;
 	}
 	
-	@GetMapping(value="/login/{mid}/{pwd}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Integer> login(@PathVariable("mid") String mid, @PathVariable("pwd") String pwd) {
+	@PostMapping(value="/login", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> login(@RequestBody MemberVO vo) {
 		ResponseEntity<Integer> entity = null;
 		
 		try {
-			entity = new ResponseEntity<Integer>(service.login(mid, pwd), HttpStatus.OK);
+			entity = new ResponseEntity<Integer>(service.login(vo), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);

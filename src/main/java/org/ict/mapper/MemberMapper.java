@@ -7,7 +7,7 @@ public interface MemberMapper {
 	
 	public MemberVO select(int mno);
 	
-	public Integer login(@Param("mid") String mid, @Param("pwd") String pwd);
+	public Integer login(MemberVO vo);
 	
 	public void insert(MemberVO vo);
 	
