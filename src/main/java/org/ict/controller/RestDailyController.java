@@ -118,6 +118,6 @@ public class RestDailyController {
 			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
-	}//addWalk
+	}//addWalk 
 	
 }//class
