@@ -26,7 +26,7 @@ import lombok.extern.log4j.Log4j;
 public class RestDailyController {
 	final String SUCCESS = "SUCCESS";
 	
-	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
 	@Autowired
 	private DailyService service;
@@ -119,5 +119,6 @@ public class RestDailyController {
 		}
 		return entity;
 	}//addWalk 
+
 	
 }//class

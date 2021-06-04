@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jdk.internal.org.jline.utils.Log;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Service
 public class MemberServiceImpl implements MemberService {
 	
@@ -62,6 +66,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int check(String mid) {
 		return mapper.check(mid);
+	}
+	
+	@Override
+	public int confirm(int mno, String pwd) {
+		try {
+			pwd = encode(pwd);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return mapper.confirm(mno, pwd);
 	}
 	
 	private String encode(String pwd) throws NoSuchAlgorithmException {
