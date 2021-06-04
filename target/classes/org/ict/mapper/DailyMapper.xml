@@ -10,15 +10,7 @@
 	</select>
 	
 	<insert id="insert">
-<<<<<<< HEAD
-<<<<<<< HEAD
 		INSERT INTO daily (walk, water, ddate, mno)
-=======
-		INSERT INTO daily(walk, water, ddate, mno)
->>>>>>> parent of 3871107 (2021-06-03 민규태)
-=======
-		INSERT INTO daily (walk, water, ddate, mno)
->>>>>>> 910a8f0368ab1f4b133297538b931b7a61e4596a
 		VALUES(0, 0, #{ddate}, #{mno})
 	</insert>
 	
@@ -33,5 +25,15 @@
 		SET water = water + #{amount}
 		WHERE ddate = #{ddate} and mno = #{mno}
 	</update>
-		
+	    
+    <select id="getWalk" resultType="Integer">
+        SELECT walk FROM daily
+        WHERE ddate = #{ddate} and mno = #{mno}
+    </select>
+    
+    <update id="addWalk">
+        UPDATE daily SET walk = walk + #{amount}
+        WHERE ddate = #{ddate} and mno = #{mno}
+    </update>
+    
 </mapper>
