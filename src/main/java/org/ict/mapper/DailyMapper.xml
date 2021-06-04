@@ -10,7 +10,7 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO daily IF NOT EXISTS (walk, water, ddate, mno)
+		INSERT INTO daily (walk, water, ddate, mno)
 		VALUES(0, 0, #{ddate}, #{mno})
 	</insert>
 	
