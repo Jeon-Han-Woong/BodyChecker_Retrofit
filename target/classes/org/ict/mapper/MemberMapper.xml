@@ -35,5 +35,10 @@
 		DELETE FROM member
 		WHERE mno = #{mno}
 	</delete>
+	
+	<select id="confirm" resultType="int">
+		SELECT COUNT(mno) FROM member
+		WHERE mno = #{mno} AND pwd = #{pwd}
+	</select>
 
 </mapper>

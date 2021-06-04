@@ -13,8 +13,4 @@ public interface DailyMapper {
 	
 	public void updateWater(@Param("amount") int amount, @Param("ddate") String ddate, @Param("mno") int mno);
 	
-	public Integer getWalk(@Param("ddate") String ddate, @Param("mno") int mno);
-	
-	public void addWalk(@Param("ddate") String ddate, @Param("mno") int mno, @Param("amount") int amount);
-	
 }

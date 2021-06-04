@@ -10,7 +10,11 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO daily IF NOT EXISTS (walk, water, ddate, mno)
+<<<<<<< HEAD
+		INSERT INTO daily (walk, water, ddate, mno)
+=======
+		INSERT INTO daily(walk, water, ddate, mno)
+>>>>>>> parent of 3871107 (2021-06-03 민규태)
 		VALUES(0, 0, #{ddate}, #{mno})
 	</insert>
 	
@@ -23,16 +27,6 @@
 	<update id="updateWater">
 		UPDATE daily
 		SET water = water + #{amount}
-		WHERE ddate = #{ddate} and mno = #{mno}
-	</update>
-	
-	<select id="getWalk" resultType="Integer">
-		SELECT walk FROM daily
-		WHERE ddate = #{ddate} and mno = #{mno}
-	</select>
-	
-	<update id="addWalk">
-		UPDATE daily SET walk = walk + #{amount}
 		WHERE ddate = #{ddate} and mno = #{mno}
 	</update>
 		

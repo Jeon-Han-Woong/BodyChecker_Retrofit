@@ -99,8 +99,8 @@ public class RestMemberController {
 		return entity;
 	}//remove
 	
-	@PostMapping(value="/check", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> check(@RequestBody String mid) {
+	@PostMapping(value="/check/{mid}", produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> check(@PathVariable("mid") String mid) {
 		ResponseEntity<String> entity  = null;
 		
 		try {
@@ -112,5 +112,19 @@ public class RestMemberController {
 		
 		return entity;
 	}//check
+	
+	@PostMapping(value="/confirm/{mno}/{pwd}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> confirm(@PathVariable("mno") int mno, @PathVariable("pwd") String pwd) {
+		ResponseEntity<Integer> entity = null;
+		
+		try {
+			entity = new ResponseEntity<Integer>(service.confirm(mno, pwd), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
 	
 }//class

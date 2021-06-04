@@ -15,4 +15,6 @@ public interface MemberService {
 	public void remove(int mno);
 	
 	public int check(String mid);
+	
+	public int confirm(int mno, String pwd);
 }
