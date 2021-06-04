@@ -10,11 +10,7 @@
 	</select>
 	
 	<insert id="insert">
-<<<<<<< HEAD
 		INSERT INTO daily (walk, water, ddate, mno)
-=======
-		INSERT INTO daily(walk, water, ddate, mno)
->>>>>>> parent of 3871107 (2021-06-03 민규태)
 		VALUES(0, 0, #{ddate}, #{mno})
 	</insert>
 	
