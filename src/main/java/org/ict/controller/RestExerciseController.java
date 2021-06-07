@@ -24,7 +24,8 @@ public class RestExerciseController {
 	@Autowired ExerciseService service;
 	
 	@GetMapping(value="/{edate}/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ExerciseVO>> getExerList(@PathVariable("edate") String edate, @PathVariable("mno") int mno){
+	public ResponseEntity<List<ExerciseVO>> getExerList(@PathVariable("edate") String edate, 
+														@PathVariable("mno") int mno){
 		 
 		ResponseEntity<List<ExerciseVO>> entity = null;
 		
