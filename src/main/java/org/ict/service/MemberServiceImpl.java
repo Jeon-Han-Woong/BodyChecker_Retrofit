@@ -79,7 +79,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	private String encode(String pwd) throws NoSuchAlgorithmException {
-		
 		MessageDigest md = MessageDigest.getInstance("SHA-512");
 		md.update(pwd.getBytes());
 		String hex = String.format("%0128x", new BigInteger(1, md.digest()));
